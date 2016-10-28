@@ -1,17 +1,7 @@
 import React from 'react';
-import Toggle from 'material-ui/Toggle'
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import MenuItem from 'material-ui/MenuItem';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-const muiTheme = getMuiTheme({
-  toggle: {
-    thumbOnColor: '#ffffff',
-    trackOnColor: '#32DD9C'
-  }
-});
 
 class AppBarComp extends React.Component {
 
@@ -22,16 +12,11 @@ class AppBarComp extends React.Component {
     };
   }
 
-  getChildContext() {
-    return {muiTheme: getMuiTheme()};
-  }
-
   handleToggle = () => this.setState({open: !this.state.open});
   handleClose = () => this.setState({open: false});
 
   render() {
-    return <MuiThemeProvider muiTheme={muiTheme}>
-      <div>
+      return <div>
         <AppBar
           onLeftIconButtonTouchTap={this.handleToggle}
           title="ProWatch - Everything Overwatch"
@@ -43,11 +28,13 @@ class AppBarComp extends React.Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-          <MenuItem onTouchTap={this.handleClose}>Settings</MenuItem>
-          <MenuItem onTouchTap={this.handleClose}>About</MenuItem>
+          <MenuItem onTouchTap={this.handleClose}>Item 1</MenuItem>
+          <MenuItem onTouchTap={this.handleClose}>Item 2</MenuItem>
+          <MenuItem onTouchTap={this.handleClose}>Item 3</MenuItem>
+          <MenuItem onTouchTap={this.handleClose}>Item 4</MenuItem>
+          <MenuItem onTouchTap={this.handleClose}>Item 5</MenuItem>
         </Drawer>
       </div>
-  </MuiThemeProvider>
   }
 }
 
